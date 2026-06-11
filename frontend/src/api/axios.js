@@ -2,8 +2,7 @@ import axios from 'axios';
 
 const api = axios.create({
   baseURL: 'https://service-connect-wcz2.onrender.com/api',
-  headers: { 'Content-Type': 'application/json' },
-  withCredentials: true,
+  headers: { 'Content-Type': 'application/json' }
 });
 
 api.interceptors.request.use((config) => {
