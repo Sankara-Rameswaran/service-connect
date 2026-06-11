@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: 'https://service-connect-wcz2.onrender.com/api',
   headers: { 'Content-Type': 'application/json' },
   withCredentials: true,
 });
@@ -21,7 +21,7 @@ api.interceptors.response.use(
       try {
         const refreshToken = localStorage.getItem('refreshToken');
         if (!refreshToken) throw new Error('No refresh token');
-        const { data } = await axios.post('/api/auth/refresh', { refreshToken });
+        const { data } = await axios.post('https://service-connect-wcz2.onrender.com/api/auth/refresh',{ refreshToken });
         localStorage.setItem('token', data.data.accessToken);
         localStorage.setItem('refreshToken', data.data.refreshToken);
         originalRequest.headers.Authorization = `Bearer ${data.data.accessToken}`;
